@@ -5,10 +5,7 @@ public class StaffFullTime extends Staff {
     private double bonusSalary;
     private double offDay;
 
-    public StaffFullTime(int id, String name, int age, String address, String gender, String phoneNumber, String email, String status, double overTime, double bonus, double dayOff) {
-    }
-
-    public StaffFullTime(int id, String name, int age, String address, String gender, String phoneNumber, String email, boolean status, double overTime, double bonusSalary, double offDay) {
+    public StaffFullTime(int id, String name, int age, String address, String gender, String phoneNumber, String email, String status, double overTime, double bonusSalary, double offDay) {
         super(id, name, age, address, gender, phoneNumber, email, status);
         this.overTime = overTime;
         this.bonusSalary = bonusSalary;

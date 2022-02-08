@@ -1,6 +1,8 @@
 package model;
 
-public class Staff {
+import java.io.Serializable;
+
+public class Staff implements Serializable {
     private int id;
     private String name;
     private int age;
@@ -80,7 +82,7 @@ public class Staff {
         this.email = email;
     }
 
-    public String isStatus() {
+    public String getStatus() {
         return status;
     }
 
