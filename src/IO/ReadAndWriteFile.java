@@ -20,7 +20,7 @@ public class ReadAndWriteFile<E> {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(pathname));
             return (ArrayList<E>) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
         }
         return new ArrayList<>();
     }

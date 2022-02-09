@@ -7,10 +7,10 @@ import manager.MngParttime;
 import java.util.Scanner;
 
 public class RunByAdmin {
-    public static   MngAccount mngAccount = new MngAccount();
-    public static MngParttime mngParttime = new MngParttime();
-    public static MngFulltime mngFulltime = new MngFulltime();
-    public static void menuAd() {
+    public MngAccount mngAccount = new MngAccount();
+    public MngParttime mngParttime = new MngParttime();
+    public MngFulltime mngFulltime = new MngFulltime();
+    public void menuAd() {
 //        MngAccount mngAccount = new MngAccount();
 //        MngParttime mngParttime = new MngParttime();
 //        MngFulltime mngFulltime = new MngFulltime();
@@ -20,6 +20,7 @@ public class RunByAdmin {
             System.out.println("*****************************");
             System.out.println("*   1. Quản lý nhân viên    *");
             System.out.println("*   2. Quản Lý Tài khoản    *");
+            System.out.println("*   3. Đổi mật khẩu         *");
             System.out.println("*   0. Đăng xuất            *");
             System.out.println("*****************************");
             System.out.println("******  Nhập lựa chọn ******");
@@ -180,6 +181,9 @@ public class RunByAdmin {
                                 System.out.println("Nhập linh ta linh tinh, lại đi!");
                         }
                     } while (choice5 !=0);
+                    break;
+                case 3:
+                    mngAccount.editAd();
                     break;
                 default:
                     System.out.println("Nhập linh ta linh tinh, lại đi!");

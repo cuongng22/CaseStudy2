@@ -7,7 +7,7 @@ import manager.MngParttime;
 import java.util.Scanner;
 
 public class RunByUser {
-    public static void menuUser() {
+    public void menuUser() {
         MngParttime mngParttime = new MngParttime();
         MngFulltime mngFulltime = new MngFulltime();
         MngAccount account = new MngAccount();

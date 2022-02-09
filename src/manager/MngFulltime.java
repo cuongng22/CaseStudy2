@@ -13,7 +13,7 @@ public class MngFulltime {
     private ArrayList<StaffFullTime> staffFullTimes;
     Scanner scanner = new Scanner(System.in);
     private ReadAndWriteFile ioFile = new ReadAndWriteFile();
-    public static final String PATH_NAME_Staff1 = "C:\\Users\\Admin\\Desktop\\CaseStudy2\\src\\file\\StaffFullTime.txt";
+    public static final String PATH_NAME_Staff1 = "files/StaffFullTime.txt";
 
     public MngFulltime() {
         this.staffFullTimes = ioFile.readFileData(PATH_NAME_Staff1);
@@ -77,6 +77,7 @@ public class MngFulltime {
         System.out.println("3. Khác");
         int choice = scanner.nextInt();
         gender = getGender(choice);
+        scanner.nextLine();
         String phoneNumber;
         boolean checkPhoneNumber;
         do {

@@ -5,6 +5,7 @@ import login.RunByAdmin;
 import login.RunByUser;
 import model.Account;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,13 +14,16 @@ public class MngAccount {
     private ArrayList<Account> accounts;
     Scanner scanner = new Scanner(System.in);
     ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
-    private static final String Path_of_acc = "C:\\Users\\Admin\\Desktop\\CaseStudy2\\src\\file\\Account.txt";
+    private static final String Path_of_acc = "files/account.txt";
     private final ReadAndWriteFile ioFile = new ReadAndWriteFile();
 
     public MngAccount() {
-        this.accounts = readAndWriteFile.readFileData(Path_of_acc);
+        if (new File(Path_of_acc).length() == 0) {
+            this.accounts = new ArrayList<>();
+        } else {
+            this.accounts = ioFile.readFileData(Path_of_acc);
+        }
     }
-
     public void createAcc() {
         System.out.println("Nhập tên tài khoản: ");
         String user = checkUser(scanner.nextLine());
@@ -27,6 +31,7 @@ public class MngAccount {
         String pass = scanner.nextLine();
         Account account = new Account(user, pass);
         accounts.add(account);
+        System.out.println("Đăng kí thành công!");
         ioFile.writerFileData(accounts, Path_of_acc);
     }
 
