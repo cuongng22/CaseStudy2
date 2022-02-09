@@ -17,7 +17,8 @@ public static void menuLogin() {
         choice1 = scanner.nextInt();
         switch (choice1) {
             case 1:
-
+                mngAccount.login();
+                break;
             case 2:
                 mngAccount.createAcc();
                 break;

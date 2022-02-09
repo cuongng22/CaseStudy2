@@ -7,11 +7,13 @@ import manager.MngParttime;
 import java.util.Scanner;
 
 public class RunByAdmin {
-
+    public static   MngAccount mngAccount = new MngAccount();
+    public static MngParttime mngParttime = new MngParttime();
+    public static MngFulltime mngFulltime = new MngFulltime();
     public static void menuAd() {
-        MngAccount mngAccount = new MngAccount();
-        MngParttime mngParttime = new MngParttime();
-        MngFulltime mngFulltime = new MngFulltime();
+//        MngAccount mngAccount = new MngAccount();
+//        MngParttime mngParttime = new MngParttime();
+//        MngFulltime mngFulltime = new MngFulltime();
         Scanner scanner = new Scanner(System.in);
         int choice1;
         do {
@@ -156,6 +158,7 @@ public class RunByAdmin {
                         System.out.println("3. Hiển thị tất cả tài khoản");
                         System.out.println("4. Đổi mật khẩu tài khoản nhân viên");
                         System.out.println("5. Đổi mật khẩu tài khoản admin");
+                        System.out.println("0. Thoát");
                         choice5 =scanner.nextInt();
                         switch (choice5) {
                             case 1:

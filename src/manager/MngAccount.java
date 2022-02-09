@@ -14,6 +14,7 @@ public class MngAccount {
     Scanner scanner = new Scanner(System.in);
     ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
     private static final String Path_of_acc = "C:\\Users\\Admin\\Desktop\\CaseStudy2\\src\\file\\Account.txt";
+    private final ReadAndWriteFile ioFile = new ReadAndWriteFile();
 
     public MngAccount() {
         this.accounts = readAndWriteFile.readFileData(Path_of_acc);
@@ -26,6 +27,7 @@ public class MngAccount {
         String pass = scanner.nextLine();
         Account account = new Account(user, pass);
         accounts.add(account);
+        ioFile.writerFileData(accounts, Path_of_acc);
     }
 
     public String checkUser(String user) {
@@ -43,7 +45,7 @@ public class MngAccount {
         String user = scanner.nextLine();
         Account account = null;
         for (Account account1 : accounts) {
-            if (account1.getUserName().equals(account)) {
+            if (account1.getUserName().equals(user)) {
                 account = account1;
                 break;
             }
@@ -52,6 +54,7 @@ public class MngAccount {
             accounts.remove(account);
             System.out.println("Xoá thành công");
         } else System.out.println("Không tìm thấy tên tài khoản!");
+        ioFile.writerFileData(accounts, Path_of_acc);
     }
 
     public void editPassword() {
@@ -59,7 +62,7 @@ public class MngAccount {
         String user = scanner.nextLine();
         Account account = null;
         for (Account account1 : accounts) {
-            if (account1.getUserName().equals(account)) {
+            if (account1.getUserName().equals(user)) {
                 account = account1;
                 break;
             }
@@ -69,6 +72,7 @@ public class MngAccount {
             String mk = scanner.nextLine();
             account.setPassWord(mk);
         } else System.out.println("Không tìm thấy tên tài khoản!");
+        ioFile.writerFileData(accounts, Path_of_acc);
     }
 
     public boolean login(Account account) {
@@ -80,17 +84,12 @@ public class MngAccount {
         return false;
     }
 
-    public boolean loginAdmin(Account account) {
-        if (ad.equals(account)) {
-            return true;
-        } else return false;
-    }
-
     public void editAd() {
         System.out.println("Nhập mk mới: ");
         String mkAd= scanner.nextLine();
         ad.setPassWord(mkAd);
         System.out.println("done!");
+        ioFile.writerFileData(accounts, Path_of_acc);
     }
 
     public void showAllUser() {
@@ -117,6 +116,7 @@ public class MngAccount {
             String newMk = scanner.nextLine();
             account.setPassWord(newMk);
         } else System.out.println("sai tk hoặc mk");
+        ioFile.writerFileData(accounts, Path_of_acc);
     }
 
     public void login() {
@@ -128,20 +128,11 @@ public class MngAccount {
         String mk = scanner.nextLine();
         Account account = new Account(tk,mk);
 
-        if (account.equals(ad)) {
+        if (account.getUserName().equals(ad.getUserName())&&account.getPassWord().equals(ad.getPassWord())) {
             runByAdmin.menuAd();
-        } else if (isUser(account)
+        } else if (login(account)
         ) {
             runByUser.menuUser();
         } else System.out.println("sai tên đăng nhập hoặc mật khẩu");
-    }
-
-    private boolean isUser(Account account) {
-        for (Account account1: accounts) {
-            if (account1.equals(account)){
-                return true;
-            }
-        }
-        return false;
     }
 }

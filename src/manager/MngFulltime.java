@@ -10,13 +10,13 @@ import java.util.Scanner;
 
 public class MngFulltime {
 
-    private ArrayList<StaffFullTime> staffFullTimes = new ArrayList<>();
+    private ArrayList<StaffFullTime> staffFullTimes;
     Scanner scanner = new Scanner(System.in);
-    private ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
+    private ReadAndWriteFile ioFile = new ReadAndWriteFile();
     public static final String PATH_NAME_Staff1 = "C:\\Users\\Admin\\Desktop\\CaseStudy2\\src\\file\\StaffFullTime.txt";
 
     public MngFulltime() {
-        this.staffFullTimes = readAndWriteFile.readFileData(PATH_NAME_Staff1);
+        this.staffFullTimes = ioFile.readFileData(PATH_NAME_Staff1);
     }
 
     public ArrayList<StaffFullTime> getStaffFullTimes() {
@@ -105,6 +105,7 @@ public class MngFulltime {
         double bonus = checkBonus(scanner.nextDouble());
         StaffFullTime staffFullTime = new StaffFullTime(id, name, age, address,gender, phoneNumber, email, status, overTime, bonus, dayOff );
         staffFullTimes.add(staffFullTime);
+        ioFile.writerFileData(staffFullTimes,PATH_NAME_Staff1);
     }
 
     public void editStaffFullTime() {
@@ -225,6 +226,7 @@ public class MngFulltime {
                 }
             } while (choice != 0);
         } else System.out.println("Nhập sai ID rồi!");
+        ioFile.writerFileData(staffFullTimes,PATH_NAME_Staff1);
     }
 
 
@@ -286,6 +288,7 @@ public class MngFulltime {
         } else {
             System.out.println("ko có nhân viên nào trùng ID!");
         }
+        ioFile.writerFileData(staffFullTimes,PATH_NAME_Staff1);
     }
 
     public void searchById() {
