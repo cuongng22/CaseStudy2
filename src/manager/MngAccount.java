@@ -1,6 +1,8 @@
 package manager;
 
 import IO.ReadAndWriteFile;
+import login.RunByAdmin;
+import login.RunByUser;
 import model.Account;
 
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ public class MngAccount {
     private ArrayList<Account> accounts;
     Scanner scanner = new Scanner(System.in);
     ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
-    private static final String Path_of_acc = "C:\\Users\\Admin\\Desktop\\CaseStudy2\\src\\file\\Account";
+    private static final String Path_of_acc = "C:\\Users\\Admin\\Desktop\\CaseStudy2\\src\\file\\Account.txt";
 
     public MngAccount() {
         this.accounts = readAndWriteFile.readFileData(Path_of_acc);
@@ -97,7 +99,49 @@ public class MngAccount {
         }
     }
 
+    public void editPass() {
+        Account account = null;
+        System.out.println("Nhập tên tk: ");
+        String tk = scanner.nextLine();
+        System.out.println("Nhập mk: ");
+        String mk = scanner.nextLine();
+        for(Account account1 : accounts) {
+            if (account1.getUserName().equals(tk) && account1.getPassWord().equals(mk)) {
+                account = account1;
+                break;
+            }
+        }
 
+        if (account != null) {
+            System.out.println("Nhập mk mới");
+            String newMk = scanner.nextLine();
+            account.setPassWord(newMk);
+        } else System.out.println("sai tk hoặc mk");
+    }
 
+    public void login() {
+        RunByAdmin runByAdmin = new RunByAdmin();
+        RunByUser runByUser = new RunByUser();
+        System.out.println("Nhập tài khoản: ");
+        String tk = scanner.nextLine();
+        System.out.println("Nhập mật khẩu: ");
+        String mk = scanner.nextLine();
+        Account account = new Account(tk,mk);
 
+        if (account.equals(ad)) {
+            runByAdmin.menuAd();
+        } else if (isUser(account)
+        ) {
+            runByUser.menuUser();
+        } else System.out.println("sai tên đăng nhập hoặc mật khẩu");
+    }
+
+    private boolean isUser(Account account) {
+        for (Account account1: accounts) {
+            if (account1.equals(account)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

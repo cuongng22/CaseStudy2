@@ -13,7 +13,7 @@ public class MngFulltime {
     private ArrayList<StaffFullTime> staffFullTimes = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     private ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
-    public static final String PATH_NAME_Staff1 = "C:\\Users\\Admin\\Desktop\\CaseStudy2\\src\\file\\StaffFullTime";
+    public static final String PATH_NAME_Staff1 = "C:\\Users\\Admin\\Desktop\\CaseStudy2\\src\\file\\StaffFullTime.txt";
 
     public MngFulltime() {
         this.staffFullTimes = readAndWriteFile.readFileData(PATH_NAME_Staff1);

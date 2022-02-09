@@ -13,7 +13,7 @@ public class MngParttime {
     private ArrayList<StaffPartTime> staffPartTimes = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
-    private static final String PATH_NAME_OF_Staff2 = "C:\\Users\\Admin\\Desktop\\CaseStudy2\\src\\file\\StaffPartTime";
+    private static final String PATH_NAME_OF_Staff2 = "C:\\Users\\Admin\\Desktop\\CaseStudy2\\src\\file\\StaffPartTime.txt";
 
     public MngParttime() {
         this.staffPartTimes = readAndWriteFile.readFileData(PATH_NAME_OF_Staff2);
@@ -331,6 +331,12 @@ public class MngParttime {
     public void showAllSalary() {
         for (StaffPartTime staffFullTime : staffPartTimes) {
             System.out.println(staffFullTime + " Lương : "+salary(staffFullTime) +" VND");
+        }
+    }
+
+    public void displayAll() {
+        for (StaffPartTime staffPartTime : staffPartTimes) {
+            System.out.println(staffPartTime);
         }
     }
 }
