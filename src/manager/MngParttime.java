@@ -67,6 +67,7 @@ public class MngParttime {
         System.out.println("3. Khác");
         int choice = scanner.nextInt();
         gender = getGender(choice);
+        scanner.nextLine();
         String phoneNumber;
         boolean checkPhoneNumber;
         do {
@@ -159,6 +160,7 @@ public class MngParttime {
                         System.out.println("3. Khác");
                         int choice1 = scanner.nextInt();
                         gender = getGender(choice);
+                        scanner.nextLine();
                         staffPartTime.setGender(gender);
                         System.out.println("Sửa thành công!");
                     case 6:

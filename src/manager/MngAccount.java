@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MngAccount {
-    private Account ad = new Account("admin", "admin");
+    private static Account ad = new Account("admin", "admin");
     private ArrayList<Account> accounts;
     Scanner scanner = new Scanner(System.in);
     ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
@@ -23,6 +23,7 @@ public class MngAccount {
         } else {
             this.accounts = ioFile.readFileData(Path_of_acc);
         }
+        accounts.add(ad);
     }
     public void createAcc() {
         System.out.println("Nhập tên tài khoản: ");
@@ -89,14 +90,6 @@ public class MngAccount {
         return false;
     }
 
-    public void editAd() {
-        System.out.println("Nhập mk mới: ");
-        String mkAd= scanner.nextLine();
-        ad.setPassWord(mkAd);
-        System.out.println("done!");
-        ioFile.writerFileData(accounts, Path_of_acc);
-    }
-
     public void showAllUser() {
         for (Account account : accounts) {
             System.out.println(account);
@@ -104,23 +97,22 @@ public class MngAccount {
     }
 
     public void editPass() {
-        Account account = null;
         System.out.println("Nhập tên tk: ");
         String tk = scanner.nextLine();
         System.out.println("Nhập mk: ");
         String mk = scanner.nextLine();
-        for(Account account1 : accounts) {
-            if (account1.getUserName().equals(tk) && account1.getPassWord().equals(mk)) {
-                account = account1;
-                break;
-            }
-        }
+        int index = -1;
+       for (int i = 0; i < accounts.size();i++) {
+           if (accounts.get(i).getUserName().equals(tk) && accounts.get(i).getPassWord().equals(mk)) {
+               index = i;
+           }
+       }
 
-        if (account != null) {
-            System.out.println("Nhập mk mới");
-            String newMk = scanner.nextLine();
-            account.setPassWord(newMk);
-        } else System.out.println("sai tk hoặc mk");
+       if (index != -1) {
+           System.out.println("Nhap mk moi:");
+           String newMk = scanner.nextLine();
+           accounts.get(index).setPassWord(newMk);
+       } else System.out.println("Sai ten dang nhap hoac mk");
         ioFile.writerFileData(accounts, Path_of_acc);
     }
 

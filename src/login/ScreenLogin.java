@@ -11,9 +11,11 @@ public static void menuLogin() {
     MngAccount mngAccount = new MngAccount();
     int choice1;
     do {
-        System.out.println("1.Đăng nhập");
-        System.out.println("2.Đăng kí");
-        System.out.println("0.Exit");
+        System.out.println("***************************");
+        System.out.println("*     1. Đăng Nhập        *");
+        System.out.println("*     2. Đăng Ký          *");
+        System.out.println("*     0. Exit             *");
+        System.out.println("***************************");
         choice1 = scanner.nextInt();
         switch (choice1) {
             case 1:

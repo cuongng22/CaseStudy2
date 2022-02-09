@@ -169,12 +169,14 @@ public class MngFulltime {
                         System.out.println("3. Khác");
                         int choice1 = scanner.nextInt();
                         gender = getGender(choice);
+                        scanner.nextLine();
                         staffFullTime.setGender(gender);
                         System.out.println("Sửa thành công!");
                     case 6:
                         String phoneNumber;
                         boolean checkPhoneNumber;
                         do {
+                            scanner.nextLine();
                             System.out.println("Nhập số điện thoại mới :");
                             phoneNumber = scanner.nextLine();
                             checkPhoneNumber = RegexPhoneNumber.validate(phoneNumber);

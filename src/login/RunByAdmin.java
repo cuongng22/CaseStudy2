@@ -20,7 +20,6 @@ public class RunByAdmin {
             System.out.println("*****************************");
             System.out.println("*   1. Quản lý nhân viên    *");
             System.out.println("*   2. Quản Lý Tài khoản    *");
-            System.out.println("*   3. Đổi mật khẩu         *");
             System.out.println("*   0. Đăng xuất            *");
             System.out.println("*****************************");
             System.out.println("******  Nhập lựa chọn ******");
@@ -158,7 +157,6 @@ public class RunByAdmin {
                         System.out.println("2. Xoá tài khoản");
                         System.out.println("3. Hiển thị tất cả tài khoản");
                         System.out.println("4. Đổi mật khẩu tài khoản nhân viên");
-                        System.out.println("5. Đổi mật khẩu tài khoản admin");
                         System.out.println("0. Thoát");
                         choice5 =scanner.nextInt();
                         switch (choice5) {
@@ -174,19 +172,9 @@ public class RunByAdmin {
                             case 4:
                                 mngAccount.editPassword();
                                 break;
-                            case 5:
-                                mngAccount.editAd();
-                                break;
-                            default:
-                                System.out.println("Nhập linh ta linh tinh, lại đi!");
                         }
                     } while (choice5 !=0);
                     break;
-                case 3:
-                    mngAccount.editAd();
-                    break;
-                default:
-                    System.out.println("Nhập linh ta linh tinh, lại đi!");
             }
         }while(choice1 != 0);
     }
