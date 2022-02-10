@@ -19,10 +19,6 @@ public class MngFulltime {
         this.staffFullTimes = ioFile.readFileData(PATH_NAME_Staff1);
     }
 
-    public ArrayList<StaffFullTime> getStaffFullTimes() {
-        return staffFullTimes;
-    }
-
     public void displayAllFullTime() {
         for (StaffFullTime staffFullTime : staffFullTimes) {
             System.out.println(staffFullTime);
@@ -326,19 +322,33 @@ public class MngFulltime {
     }
 
     public void displayByStatusON() {
+        boolean check = false;
+        ArrayList<StaffFullTime> staffFullTimes123 = new ArrayList<>();
         for (StaffFullTime staffFT : staffFullTimes) {
             if (staffFT.getStatus().equals("ON")) {
-                System.out.println(staffFT);
+                staffFullTimes123.add(staffFT);
+                check = true;
             }
         }
+        if (check) {
+            System.out.println(staffFullTimes123);
+        }
+        else System.out.println("ko có ai");
     }
 
     public void displayByStatusOff() {
+        boolean check = false;
+        ArrayList<StaffFullTime> staffFullTimes123 = new ArrayList<>();
         for (StaffFullTime staffFT : staffFullTimes) {
             if (staffFT.getStatus().equals("Off")) {
-                System.out.println(staffFT);
+                staffFullTimes123.add(staffFT);
+                check = true;
             }
         }
+        if (check) {
+            System.out.println(staffFullTimes123);
+        }
+        else System.out.println("ko có ai");
     }
 
     public void checkStatusById() {

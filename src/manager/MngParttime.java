@@ -278,19 +278,31 @@ public class MngParttime {
     }
 
     public void displayByStatusON() {
+        boolean check = false;
+        ArrayList<StaffPartTime> staffPartTimes123 = new ArrayList<>();
         for (StaffPartTime staffFT : staffPartTimes) {
             if (staffFT.getStatus().equals("ON")) {
                 System.out.println(staffFT);
             }
         }
+        if (check) {
+            System.out.println(staffPartTimes123);
+        }
+        else System.out.println("ko có ai");
     }
 
     public void displayByStatusOff() {
+        boolean check = false;
+        ArrayList<StaffPartTime> staffPartTimes123 = new ArrayList<>();
         for (StaffPartTime staffFT : staffPartTimes) {
             if (staffFT.getStatus().equals("Off")) {
                 System.out.println(staffFT);
             }
         }
+        if (check) {
+            System.out.println(staffPartTimes123);
+        }
+        else System.out.println("ko có ai");
     }
 
     public void checkStatusById() {

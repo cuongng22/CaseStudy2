@@ -1,7 +1,6 @@
 package login;
 
 import manager.MngAccount;
-import model.Account;
 
 import java.util.Scanner;
 
@@ -19,15 +18,12 @@ public static void menuLogin() {
         choice1 = scanner.nextInt();
         switch (choice1) {
             case 1:
-                mngAccount.login();
+                mngAccount.login123();
                 break;
             case 2:
                 mngAccount.createAcc();
                 break;
-            default:
-                System.out.println("vui lòng nhập lại!");
-                break;
-        }
-    } while (choice1 != 0);
-}
+            }
+        } while (choice1 != 0);
+    }
 }

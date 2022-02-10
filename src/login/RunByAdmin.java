@@ -24,6 +24,10 @@ public class RunByAdmin {
             System.out.println("*****************************");
             System.out.println("******  Nhập lựa chọn ******");
             choice1 = scanner.nextInt();
+            if (choice1 < 0 || choice1 > 2) {
+                System.out.println();
+                System.out.println("Lựa chọn không tồn tại! Mời bạn nhập lại!");
+            }
             switch (choice1) {
                 case 1:
                     int choice2;
@@ -34,6 +38,10 @@ public class RunByAdmin {
                         System.out.println("0. Thoát");
                         System.out.println("Nhập lựa chọn!");
                         choice2 = scanner.nextInt();
+                        if (choice2 < 0 || choice2 > 2) {
+                            System.out.println();
+                            System.out.println("Lựa chọn không tồn tại! Mời bạn nhập lại!");
+                        }
                         switch (choice2) {
                             case 1:
                                 int choice3;
@@ -52,6 +60,10 @@ public class RunByAdmin {
                                     System.out.println("11.Hiển thị lương tất cả nhân viên full time!");
                                     System.out.println("0. Thoát");
                                     choice3 = scanner.nextInt();
+                                    if (choice3 < 0 || choice3 > 11) {
+                                        System.out.println();
+                                        System.out.println("Lựa chọn không tồn tại! Mời bạn nhập lại!");
+                                    }
                                     switch (choice3) {
                                         case 1:
                                             mngFulltime.createStaffFullTime();
@@ -108,6 +120,10 @@ public class RunByAdmin {
                                     System.out.println("11.Hiển thị lương tất cả nhân viên part time!");
                                     System.out.println("0. Thoát");
                                     choice4 = scanner.nextInt();
+                                    if (choice4 < 0 || choice4 > 11) {
+                                        System.out.println();
+                                        System.out.println("Lựa chọn không tồn tại! Mời bạn nhập lại!");
+                                    }
                                     switch (choice4) {
                                         case 1:
                                             mngParttime.createStaffPartTime();
@@ -159,6 +175,10 @@ public class RunByAdmin {
                         System.out.println("4. Đổi mật khẩu tài khoản nhân viên");
                         System.out.println("0. Thoát");
                         choice5 =scanner.nextInt();
+                        if (choice5 < 0 || choice5 > 4) {
+                            System.out.println();
+                            System.out.println("Lựa chọn không tồn tại! Mời bạn nhập lại!");
+                        }
                         switch (choice5) {
                             case 1:
                                 mngAccount.createAcc();

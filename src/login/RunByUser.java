@@ -28,6 +28,10 @@ public class RunByUser {
             System.out.println("11. Đổi mật khẩu!");
             System.out.println("0.Đăng xuất");
             choice1 = scanner.nextInt();
+            if (choice1 < 0 || choice1 > 11) {
+                System.out.println();
+                System.out.println("Lựa chọn không tồn tại! Mời bạn nhập lại!");
+            }
             switch (choice1) {
                 case 1:
                     mngFulltime.searchById();
@@ -62,8 +66,6 @@ public class RunByUser {
                 case 11:
                     account.editPass();
                     break;
-                default:
-                    System.out.println("Vui lòng nhập đúng!");
             }
         } while (choice1 != 0);
     }

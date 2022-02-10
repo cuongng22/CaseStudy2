@@ -13,7 +13,6 @@ public class MngAccount {
     private static Account ad = new Account("admin", "admin");
     private ArrayList<Account> accounts;
     Scanner scanner = new Scanner(System.in);
-    ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
     private static final String Path_of_acc = "files/account.txt";
     private final ReadAndWriteFile ioFile = new ReadAndWriteFile();
 
@@ -23,11 +22,11 @@ public class MngAccount {
         } else {
             this.accounts = ioFile.readFileData(Path_of_acc);
         }
-        accounts.add(ad);
     }
     public void createAcc() {
         System.out.println("Nhập tên tài khoản: ");
-        String user = checkUser(scanner.nextLine());
+        String check = scanner.nextLine();
+        String user = checkUser(check);
         System.out.println("Nhập mật khẩu");
         String pass = scanner.nextLine();
         Account account = new Account(user, pass);
@@ -38,7 +37,8 @@ public class MngAccount {
 
     public String checkUser(String user) {
         for (Account account : accounts) {
-            while(account.getUserName().equals(user)||account.getUserName().equals("admin")) {
+            while(account.getUserName().equals(user)
+            ) {
                 System.out.println("Tên đăng nhập đã tồn tại, vui lòng nhập lại!");
                 user = scanner.nextLine();
             }
@@ -102,21 +102,20 @@ public class MngAccount {
         System.out.println("Nhập mk: ");
         String mk = scanner.nextLine();
         int index = -1;
-       for (int i = 0; i < accounts.size();i++) {
-           if (accounts.get(i).getUserName().equals(tk) && accounts.get(i).getPassWord().equals(mk)) {
-               index = i;
-           }
-       }
+        for (int i = 0; i < accounts.size();i++) {
+            if (accounts.get(i).getUserName().equals(tk) && accounts.get(i).getPassWord().equals(mk)) {
+                index = i;
+            }
+        }
 
-       if (index != -1) {
-           System.out.println("Nhap mk moi:");
-           String newMk = scanner.nextLine();
-           accounts.get(index).setPassWord(newMk);
-       } else System.out.println("Sai ten dang nhap hoac mk");
-        ioFile.writerFileData(accounts, Path_of_acc);
+        if (index != -1) {
+            System.out.println("Nhap mk moi:");
+            String newMk = scanner.nextLine();
+            accounts.get(index).setPassWord(newMk);
+        } else System.out.println("Sai ten dang nhap hoac mk");
     }
 
-    public void login() {
+    public void login123() {
         RunByAdmin runByAdmin = new RunByAdmin();
         RunByUser runByUser = new RunByUser();
         System.out.println("Nhập tài khoản: ");
@@ -127,8 +126,7 @@ public class MngAccount {
 
         if (account.getUserName().equals(ad.getUserName())&&account.getPassWord().equals(ad.getPassWord())) {
             runByAdmin.menuAd();
-        } else if (login(account)
-        ) {
+        } else if (login(account)) {
             runByUser.menuUser();
         } else System.out.println("sai tên đăng nhập hoặc mật khẩu");
     }
