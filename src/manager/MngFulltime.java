@@ -1,7 +1,9 @@
 package manager;
 
 import IO.ReadAndWriteFile;
+import model.Account;
 import model.StaffFullTime;
+import model.StaffPartTime;
 import regex.RegexEmail;
 import regex.RegexPhoneNumber;
 
@@ -100,9 +102,31 @@ public class MngFulltime {
         double dayOff = dayOff(scanner.nextDouble());
         System.out.println("Nhập lương thưởng");
         double bonus = checkBonus(scanner.nextDouble());
-        StaffFullTime staffFullTime = new StaffFullTime(id, name, age, address,gender, phoneNumber, email, status, overTime, bonus, dayOff );
+        scanner.nextLine();
+        System.out.println("Nhập mã bảo mật của nhân viên: ");
+        String check124 = scanner.nextLine();
+        String code = checkCode(check124);
+        StaffFullTime staffFullTime = new StaffFullTime(id, name, age, address,gender, phoneNumber, email, status, code, overTime, bonus, dayOff );
         staffFullTimes.add(staffFullTime);
         ioFile.writerFileData(staffFullTimes,PATH_NAME_Staff1);
+    }
+
+    public boolean abc(String code) {
+        for (StaffFullTime staffFullTime : staffFullTimes) {
+            if (staffFullTime.getCode().equals(code)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public String checkCode(String code) {
+        while (abc(code) || code.equals("")) {
+            System.out.println("Vui lòng nhập code");
+            code = scanner.nextLine();
+        }
+        return code;
     }
 
     public void editStaffFullTime() {
@@ -136,10 +160,11 @@ public class MngFulltime {
                     case 1:
                         System.out.println("Nhập ID mới: ");
                         int id1 = checkId(scanner.nextInt());
-                        staffFullTime.setId(id);
+                        staffFullTime.setId(id1);
                         System.out.println("Thay đổi thành công!");
                         break;
                     case 2:
+                        scanner.nextLine();
                         System.out.println("Nhập tên mới: ");
                         String name = scanner.nextLine();
                         staffFullTime.setName(name);
@@ -152,6 +177,7 @@ public class MngFulltime {
                         System.out.println("Thay đổi thành công!");
                         break;
                     case 4:
+                        scanner.nextLine();
                         System.out.println("Nhập địa chỉ mới: ");
                         String address = scanner.nextLine();
                         staffFullTime.setAddress(address);
@@ -164,7 +190,7 @@ public class MngFulltime {
                         System.out.println("2. Nữ");
                         System.out.println("3. Khác");
                         int choice1 = scanner.nextInt();
-                        gender = getGender(choice);
+                        gender = getGender(choice1);
                         scanner.nextLine();
                         staffFullTime.setGender(gender);
                         System.out.println("Sửa thành công!");
@@ -395,6 +421,137 @@ public class MngFulltime {
     public void showAllSalary() {
         for (StaffFullTime staffFullTime : staffFullTimes) {
             System.out.println(staffFullTime + " Lương : " + salary(staffFullTime) + " VND");
+        }
+    }
+
+    public void editByCode() {
+        System.out.println("Nhập mã bảo mật của bạn: ");
+        String code =scanner.nextLine();
+        StaffFullTime staffFullTime = null;
+        for (StaffFullTime staffFullTime1 : staffFullTimes) {
+            if (staffFullTime1.getCode().equals(code)) {
+                staffFullTime = staffFullTime1;
+                break;
+            }
+        }
+        if (staffFullTime != null) {
+            int choice;
+            do {
+                System.out.println("Bạn muốn sửa cái gì? ");
+                System.out.println("1. ID");
+                System.out.println("2. Tên");
+                System.out.println("3. Tuổi");
+                System.out.println("4. Địa chỉ");
+                System.out.println("5. Giới tính");
+                System.out.println("6. Số điện thoại");
+                System.out.println("7. Email");
+                System.out.println("8. Trạng thái");
+                System.out.println("9. Giờ làm thêm");
+                System.out.println("10. Tiền thưởng");
+                System.out.println("11. Ngày nghỉ");
+                System.out.println(" 0. Thoát");
+                choice = scanner.nextInt();
+                switch (choice){
+                    case 1:
+                        System.out.println("Nhập ID mới: ");
+                        int id1 = checkId(scanner.nextInt());
+                        staffFullTime.setId(id1);
+                        System.out.println("Thay đổi thành công!");
+                        break;
+                    case 2:
+                        scanner.nextLine();
+                        System.out.println("Nhập tên mới: ");
+                        String name = scanner.nextLine();
+                        staffFullTime.setName(name);
+                        System.out.println("Thay đổi thành công!");
+                        break;
+                    case 3:
+                        System.out.println("Nhập tuổi mới: ");
+                        int age = checkAge(scanner.nextInt());
+                        staffFullTime.setAge(age);
+                        System.out.println("Thay đổi thành công!");
+                        break;
+                    case 4:
+                        scanner.nextLine();
+                        System.out.println("Nhập địa chỉ mới: ");
+                        String address = scanner.nextLine();
+                        staffFullTime.setAddress(address);
+                        System.out.println("Thay đổi thành công!");
+                        break;
+                    case 5:
+                        System.out.println("Chọn lại giới tính: ");
+                        String gender="";
+                        System.out.println("1. Nam");
+                        System.out.println("2. Nữ");
+                        System.out.println("3. Khác");
+                        int choice1 = scanner.nextInt();
+                        gender = getGender(choice);
+                        scanner.nextLine();
+                        staffFullTime.setGender(gender);
+                        System.out.println("Sửa thành công!");
+                    case 6:
+                        String phoneNumber;
+                        boolean checkPhoneNumber;
+                        do {
+                            scanner.nextLine();
+                            System.out.println("Nhập số điện thoại mới :");
+                            phoneNumber = scanner.nextLine();
+                            checkPhoneNumber = RegexPhoneNumber.validate(phoneNumber);
+                        }while (!checkPhoneNumber);
+                        staffFullTime.setPhoneNumber(phoneNumber);
+                        System.out.println("Thay đổi thành công!");
+                        break;
+                    case 7:
+                        boolean checkEmail;
+                        String email;
+                        do {
+                            System.out.println("Nhập email:");
+                            email = scanner.nextLine();
+                            checkEmail = RegexEmail.validate(email);
+                        }while (!checkEmail);
+                        staffFullTime.setEmail(email);
+                        System.out.println("thay đổi thành công");
+                        break;
+                    case 8:
+                        String status = "";
+                        System.out.println("Chọn trạng thái: (on : làm, off: nghỉ)");
+                        System.out.println("1. On");
+                        System.out.println("2. Off");
+                        int choice123 = scanner.nextInt();
+                        status = getStatus(choice123);
+                        staffFullTime.setStatus(status);
+                        System.out.println("Thay đổi thành công");
+                        break;
+                    case 9:
+                        System.out.println("Nhập giờ làm thêm mới: ");
+                        double overTime = checkOverTime(scanner.nextDouble());
+                        staffFullTime.setOverTime(overTime);
+                        System.out.println("Thay đổi thành công!");
+                        break;
+                    case 10:
+                        System.out.println("Nhập tiền thưởng mới: ");
+                        double bonus = checkBonus(scanner.nextDouble());
+                        staffFullTime.setBonusSalary(bonus);
+                        System.out.println("Thành công");
+                        break;
+                    case 11:
+                        System.out.println("Nhập ngày nghỉ mới: ");
+                        double dayOff = dayOff(scanner.nextDouble());
+                        staffFullTime.setOffDay(dayOff);
+                        System.out.println("thành công");
+                        break;
+                    default:
+                        System.out.println("Vui lòng chọn đúng!");
+                        break;
+                }
+            } while (choice != 0);
+        } else System.out.println("Nhập sai mã bảo mật rồi!");
+        ioFile.writerFileData(staffFullTimes,PATH_NAME_Staff1);
+    }
+
+    public void disPlayCode() {
+        for (StaffFullTime staffFullTime : staffFullTimes) {
+            System.out.println("Staff FullTime "+ "id ="+staffFullTime.getId()+" name : "+staffFullTime.getName()+ " code: "+ staffFullTime.getCode());
         }
     }
 }

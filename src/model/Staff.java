@@ -11,8 +11,21 @@ public class Staff implements Serializable {
     private String phoneNumber;
     private String email;
     private String status;
+    private String code;
 
     public Staff() {
+    }
+
+    public Staff(int id, String name, int age, String address, String gender, String phoneNumber, String email, String status, String code) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.status = status;
+        this.code = code;
     }
 
     public Staff(int id, String name, int age, String address, String gender, String phoneNumber, String email, String status) {
@@ -24,6 +37,14 @@ public class Staff implements Serializable {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.status = status;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public int getId() {

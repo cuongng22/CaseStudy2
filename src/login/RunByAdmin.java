@@ -11,9 +11,6 @@ public class RunByAdmin {
     public MngParttime mngParttime = new MngParttime();
     public MngFulltime mngFulltime = new MngFulltime();
     public void menuAd() {
-//        MngAccount mngAccount = new MngAccount();
-//        MngParttime mngParttime = new MngParttime();
-//        MngFulltime mngFulltime = new MngFulltime();
         Scanner scanner = new Scanner(System.in);
         int choice1;
         do {
@@ -58,6 +55,7 @@ public class RunByAdmin {
                                     System.out.println("9.Kiểm tra trạng thái nhân viên theo ID");
                                     System.out.println("10.Hiển thị lương theo ID");
                                     System.out.println("11.Hiển thị lương tất cả nhân viên full time!");
+                                    System.out.println("12. hiển thị mã bảo mật của nhân viên");
                                     System.out.println("0. Thoát");
                                     choice3 = scanner.nextInt();
                                     if (choice3 < 0 || choice3 > 11) {
@@ -98,8 +96,9 @@ public class RunByAdmin {
                                         case 11:
                                             mngFulltime.showAllSalary();
                                             break;
-                                        default:
-                                            System.out.println("Nhập linh ta linh tinh, lại đi!");
+                                        case 12:
+                                            mngFulltime.disPlayCode();
+                                            break;
                                     }
                                 } while (choice3 != 0);
                                 break;
@@ -118,6 +117,7 @@ public class RunByAdmin {
                                     System.out.println("9.Kiểm tra trạng thái nhân viên theo ID");
                                     System.out.println("10.Hiển thị lương theo ID");
                                     System.out.println("11.Hiển thị lương tất cả nhân viên part time!");
+                                    System.out.println("12. hiển thị mã bảo mật của nhân viên");
                                     System.out.println("0. Thoát");
                                     choice4 = scanner.nextInt();
                                     if (choice4 < 0 || choice4 > 11) {
@@ -158,11 +158,12 @@ public class RunByAdmin {
                                         case 11:
                                             mngParttime.showAllSalary();
                                             break;
+                                        case 12:
+                                            mngParttime.disPlayCode();
+                                            break;
                                     }
                                 } while (choice4 != 0);
                                 break;
-                            default:
-                                System.out.println("Nhập linh ta linh tinh, lại đi!");
                         }
                     } while (choice2 != 0);
                     break;

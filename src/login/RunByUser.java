@@ -1,6 +1,5 @@
 package login;
 
-import manager.MngAccount;
 import manager.MngFulltime;
 import manager.MngParttime;
 
@@ -10,7 +9,6 @@ public class RunByUser {
     public void menuUser() {
         MngParttime mngParttime = new MngParttime();
         MngFulltime mngFulltime = new MngFulltime();
-        MngAccount account = new MngAccount();
         Scanner scanner = new Scanner(System.in);
         int choice1;
         do {
@@ -25,7 +23,8 @@ public class RunByUser {
             System.out.println("8.Tra cứu lương Part Time");
             System.out.println("9. Hiển thị tất cả lương của nhân viên FULLTIME");
             System.out.println("10. Hiển thị tất cả lương của nhân viên PARTTIME");
-            System.out.println("11. Đổi mật khẩu!");
+            System.out.println("11. Thay đổi thông tin cá nhân! (Fulltime)");
+            System.out.println("12. Thay đổi thông tin cá nhân! (Parttime)");
             System.out.println("0.Đăng xuất");
             choice1 = scanner.nextInt();
             if (choice1 < 0 || choice1 > 11) {
@@ -64,7 +63,10 @@ public class RunByUser {
                     mngParttime.showAllSalary();
                     break;
                 case 11:
-                    account.editPass();
+                    mngFulltime.editByCode();
+                    break;
+                case 12:
+                    mngParttime.editByCode();
                     break;
             }
         } while (choice1 != 0);
