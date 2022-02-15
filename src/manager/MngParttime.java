@@ -362,13 +362,13 @@ public class MngParttime {
     }
 
     public double salary(StaffPartTime staffPartTime) {
-        return staffPartTime.getTimeWork() * 30000;
+        return staffPartTime.getTimeWork() * 2;
     }
 
 
     public void showAllSalary() {
         for (StaffPartTime staffFullTime : staffPartTimes) {
-            System.out.println(staffFullTime + " Lương : " + salary(staffFullTime) + " VND");
+            System.out.println(staffFullTime + " Lương : " + salary(staffFullTime) + " USD");
         }
     }
 
@@ -478,9 +478,6 @@ public class MngParttime {
                         double timeWork123 = checkTimeWork(scanner.nextDouble());
                         staffPartTime.setTimeWork(timeWork123);
                         System.out.println("Done!");
-                        break;
-                    default:
-                        System.out.println("Vui lòng chọn đúng!");
                         break;
                 }
             } while (choice != 0);

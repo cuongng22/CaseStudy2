@@ -23,6 +23,11 @@ public class MngAccount {
             this.accounts = ioFile.readFileData(Path_of_acc);
         }
     }
+
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+
     public void createAcc() {
         System.out.println("Nhập tên tài khoản: ");
         String check = scanner.nextLine();
@@ -37,7 +42,7 @@ public class MngAccount {
 
     public String checkUser(String user) {
         for (Account account : accounts) {
-            while(account.getUserName().equals(user)
+            while (account.getUserName().equals(user)
             ) {
                 System.out.println("Tên đăng nhập đã tồn tại, vui lòng nhập lại!");
                 user = scanner.nextLine();
@@ -74,7 +79,7 @@ public class MngAccount {
             }
         }
         if (account != null) {
-            System.out.println("Nhập mk mới" );
+            System.out.println("Nhập mk mới");
             String mk = scanner.nextLine();
             account.setPassWord(mk);
         } else System.out.println("Không tìm thấy tên tài khoản!");
@@ -96,38 +101,38 @@ public class MngAccount {
         }
     }
 
-    public void editPass() {
-        System.out.println("Nhập tên tk: ");
-        String tk = scanner.nextLine();
-        System.out.println("Nhập mk: ");
-        String mk = scanner.nextLine();
-        int index = -1;
-        for (int i = 0; i < accounts.size();i++) {
-            if (accounts.get(i).getUserName().equals(tk) && accounts.get(i).getPassWord().equals(mk)) {
-                index = i;
+        public void editPass() {
+            System.out.println("Nhập tên tk: ");
+            String tk = scanner.nextLine();
+            System.out.println("Nhập mk: ");
+            String mk = scanner.nextLine();
+            int index = -1;
+            for (int i = 0; i < accounts.size(); i++) {
+                if (accounts.get(i).getUserName().equals(tk) && accounts.get(i).getPassWord().equals(mk)) {
+                    index = i;
+                }
             }
+
+            if (index != -1) {
+                System.out.println("Nhap mk moi:");
+                String newMk = scanner.nextLine();
+                accounts.get(index).setPassWord(newMk);
+            } else System.out.println("Sai ten dang nhap hoac mk");
         }
 
-        if (index != -1) {
-            System.out.println("Nhap mk moi:");
-            String newMk = scanner.nextLine();
-            accounts.get(index).setPassWord(newMk);
-        } else System.out.println("Sai ten dang nhap hoac mk");
-    }
+        public void login123() {
+            RunByAdmin runByAdmin = new RunByAdmin();
+            RunByUser runByUser = new RunByUser();
+            System.out.println("Nhập tài khoản: ");
+            String tk = scanner.nextLine();
+            System.out.println("Nhập mật khẩu: ");
+            String mk = scanner.nextLine();
+            Account account = new Account(tk, mk);
 
-    public void login123() {
-        RunByAdmin runByAdmin = new RunByAdmin();
-        RunByUser runByUser = new RunByUser();
-        System.out.println("Nhập tài khoản: ");
-        String tk = scanner.nextLine();
-        System.out.println("Nhập mật khẩu: ");
-        String mk = scanner.nextLine();
-        Account account = new Account(tk,mk);
-
-        if (account.getUserName().equals(ad.getUserName())&&account.getPassWord().equals(ad.getPassWord())) {
-            runByAdmin.menuAd();
-        } else if (login(account)) {
-            runByUser.menuUser();
-        } else System.out.println("sai tên đăng nhập hoặc mật khẩu");
+            if (account.getUserName().equals(ad.getUserName()) && account.getPassWord().equals(ad.getPassWord())) {
+                runByAdmin.menuAd();
+            } else if (login(account)) {
+                runByUser.menuUser();
+            } else System.out.println("sai tên đăng nhập hoặc mật khẩu");
+        }
     }
-}

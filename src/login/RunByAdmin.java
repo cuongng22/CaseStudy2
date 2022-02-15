@@ -58,7 +58,7 @@ public class RunByAdmin {
                                     System.out.println("12. hiển thị mã bảo mật của nhân viên");
                                     System.out.println("0. Thoát");
                                     choice3 = scanner.nextInt();
-                                    if (choice3 < 0 || choice3 > 11) {
+                                    if (choice3 < 0 || choice3 > 12) {
                                         System.out.println();
                                         System.out.println("Lựa chọn không tồn tại! Mời bạn nhập lại!");
                                     }
@@ -120,7 +120,7 @@ public class RunByAdmin {
                                     System.out.println("12. hiển thị mã bảo mật của nhân viên");
                                     System.out.println("0. Thoát");
                                     choice4 = scanner.nextInt();
-                                    if (choice4 < 0 || choice4 > 11) {
+                                    if (choice4 < 0 || choice4 > 12) {
                                         System.out.println();
                                         System.out.println("Lựa chọn không tồn tại! Mời bạn nhập lại!");
                                     }

@@ -333,18 +333,20 @@ public class MngFulltime {
     }
 
     public void searchByName() {
+        boolean check =false;
         ArrayList<StaffFullTime> staff123 = new ArrayList<>();
         System.out.println("Nhập tên của nhân viên muốn tìm kiếm :  ");
         String name = scanner.nextLine();
         for (StaffFullTime staffFullTime : staffFullTimes) {
             if (staffFullTime.getName().equals(name)) {
                 staff123.add(staffFullTime);
+                check = true;
             }
         }
 
-        for (StaffFullTime staffFullTime : staff123) {
-            System.out.println(staffFullTime);
-        }
+        if (check) {
+            System.out.println(staff123);
+        } else System.out.println("Ko tim thay!");
     }
 
     public void displayByStatusON() {
@@ -357,7 +359,7 @@ public class MngFulltime {
             }
         }
         if (check) {
-            System.out.println(staffFullTimes123);
+            System.out.println(staffFullTimes123 + "\n");
         }
         else System.out.println("ko có ai");
     }
@@ -366,7 +368,7 @@ public class MngFulltime {
         boolean check = false;
         ArrayList<StaffFullTime> staffFullTimes123 = new ArrayList<>();
         for (StaffFullTime staffFT : staffFullTimes) {
-            if (staffFT.getStatus().equals("Off")) {
+            if (staffFT.getStatus().equals("OFF")) {
                 staffFullTimes123.add(staffFT);
                 check = true;
             }
@@ -405,22 +407,22 @@ public class MngFulltime {
         }
 
         if (staffFullTime != null) {
-            System.out.println(staffFullTime + " Lương : " + salary(staffFullTime)+" VND");
+            System.out.println(staffFullTime + " Lương : " + salary(staffFullTime)+" USD");
         }
     }
 
     public double salary(StaffFullTime staffFullTime) {
         double day = staffFullTime.getOffDay();
         if (day <5) {
-            return ((30-day) * 250000*1.4 + staffFullTime.getBonusSalary()+ staffFullTime.getOverTime()*30000);
+            return ((30-day) * 20*1.4 + staffFullTime.getBonusSalary()+ staffFullTime.getOverTime()*3);
         } else if (day < 10) {
-            return ((30-day) * 250000*1 + staffFullTime.getBonusSalary()+ staffFullTime.getOverTime()*30000);
-        } else return ((30-day) * 250000*1 + staffFullTime.getBonusSalary()+ staffFullTime.getOverTime()*30000);
+            return ((30-day) * 20*1 + staffFullTime.getBonusSalary()+ staffFullTime.getOverTime()*3);
+        } else return ((30-day) * 20*1 + staffFullTime.getBonusSalary()+ staffFullTime.getOverTime()*3);
     }
 
     public void showAllSalary() {
         for (StaffFullTime staffFullTime : staffFullTimes) {
-            System.out.println(staffFullTime + " Lương : " + salary(staffFullTime) + " VND");
+            System.out.println(staffFullTime + " Lương : " + salary(staffFullTime) + " USD");
         }
     }
 
@@ -539,9 +541,6 @@ public class MngFulltime {
                         double dayOff = dayOff(scanner.nextDouble());
                         staffFullTime.setOffDay(dayOff);
                         System.out.println("thành công");
-                        break;
-                    default:
-                        System.out.println("Vui lòng chọn đúng!");
                         break;
                 }
             } while (choice != 0);

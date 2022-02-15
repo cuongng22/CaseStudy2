@@ -1,5 +1,6 @@
 package login;
 
+import manager.MngAccount;
 import manager.MngFulltime;
 import manager.MngParttime;
 
@@ -9,6 +10,7 @@ public class RunByUser {
     public void menuUser() {
         MngParttime mngParttime = new MngParttime();
         MngFulltime mngFulltime = new MngFulltime();
+        MngAccount mngAccount = new MngAccount();
         Scanner scanner = new Scanner(System.in);
         int choice1;
         do {
@@ -25,9 +27,10 @@ public class RunByUser {
             System.out.println("10. Hiển thị tất cả lương của nhân viên PARTTIME");
             System.out.println("11. Thay đổi thông tin cá nhân! (Fulltime)");
             System.out.println("12. Thay đổi thông tin cá nhân! (Parttime)");
+            System.out.println("13. Đổi mk");
             System.out.println("0.Đăng xuất");
             choice1 = scanner.nextInt();
-            if (choice1 < 0 || choice1 > 11) {
+            if (choice1 < 0 || choice1 > 13) {
                 System.out.println();
                 System.out.println("Lựa chọn không tồn tại! Mời bạn nhập lại!");
             }
@@ -67,6 +70,9 @@ public class RunByUser {
                     break;
                 case 12:
                     mngParttime.editByCode();
+                    break;
+                case 13:
+                    mngAccount.editPass();
                     break;
             }
         } while (choice1 != 0);

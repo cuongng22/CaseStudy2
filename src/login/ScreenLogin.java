@@ -16,6 +16,10 @@ public class ScreenLogin {
             System.out.println("*     0. Exit             *");
             System.out.println("***************************");
             choice1 = scanner.nextInt();
+            if (choice1 <0 || choice1 >2) {
+                System.out.println();
+                System.out.println("Vui lòng nhập đúng lựa chọn!");
+            }
             switch (choice1) {
                 case 1:
                     mngAccount.login123();
